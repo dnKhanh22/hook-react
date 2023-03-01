@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+// import PostItem from './PostItem';
+import { useState } from 'react';
 
+const gifts =[
+  'cpu i9',
+  'ram 32gb rbg',
+  'rgb keyboard',
+]
 function App() {
+
+  const [gift, setGift] = useState();
+  const randomGift = () =>{
+    const index = Math.floor(Math.random()* gifts.length)
+
+    setGift(gifts[index]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: 30}} >
+     <h1>{gift || 'Chưa có phần thưởng'}</h1>
+     <button onClick={randomGift}>Lấy thưởng</button>
     </div>
   );
 }
